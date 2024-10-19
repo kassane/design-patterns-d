@@ -1,6 +1,10 @@
-# Design Patterns - Annotations
+# Design Patterns - in D language
 
-This repository is dedicated to providing a comprehensive guide on design patterns in various programming languages. Whether you are a beginner or an experienced developer, this resource aims to help you understand and apply design patterns effectively in your projects.
+
+## Requirements
+
+- [D Compiler (v2.097.0) or greater](https://dlang.org/download.html)
+
 
 ## Introduction
 
