@@ -28,3 +28,17 @@ void main()
 		character.performBehavior();
 	});
 }
+
+/*
+Output:
+
+Character performs different behaviors:
+Jumping!
+Running!
+Swimming!
+
+Random behavior selection:
+Running!
+Swimming!
+Jumping!
+*/

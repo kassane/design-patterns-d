@@ -2,12 +2,30 @@ import builder;
 
 void main()
 {
-	auto waiter = new Waiter();
-	auto hawaiianPizzaBuilder = new HawaiianPizzaBuilder();
+	// Using UFCS and method chaining
+	auto house = new House.Builder()
+		.setFoundation("Concrete")
+		.setStructure("Brick")
+		.setRoof("Tile")
+		.build();
 
-	waiter.setPizzaBuilder(hawaiianPizzaBuilder);
-	waiter.constructPizza();
+	writeln(house);
 
-	Pizza pizza = waiter.getPizza();
-	writeln(pizza.toString());
+	// Using with statement for compact initialization
+	with (new House.Builder())
+	{
+		setFoundation("Stone")
+			.setStructure("Wood")
+			.setRoof("Shingle")
+			.setInterior("Modern")
+			.build()
+			.writeln();
+	}
 }
+
+/*
+Output:
+
+House(foundation: Concrete, structure: Brick, roof: Tile, interior: Not set)
+House(foundation: Stone, structure: Wood, roof: Shingle, interior: Modern)
+*/

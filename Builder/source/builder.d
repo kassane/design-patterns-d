@@ -1,97 +1,62 @@
 module builder;
-import std.stdio;
-import std.string;
+public import std.stdio;
+import std.typecons: Nullable;
 
-// Product
-class Pizza
+class House
 {
-    private string dough;
-    private string sauce;
-    private string topping;
+    private string foundation;
+    private string structure;
+    private string roof;
+    private Nullable!string interior;
 
-    void setDough(string dough)
+    static class Builder
     {
-        this.dough = dough;
+        private House house;
+
+        this()
+        {
+            house = new House();
+        }
+
+        auto setFoundation(string foundation)
+        {
+            house.foundation = foundation;
+            return this;
+        }
+
+        auto setStructure(string structure)
+        {
+            house.structure = structure;
+            return this;
+        }
+
+        auto setRoof(string roof)
+        {
+            house.roof = roof;
+            return this;
+        }
+
+        // Optional parameter using Nullable
+        auto setInterior(string interior)
+        {
+            house.interior = interior;
+            return this;
+        }
+
+        // Using UFCS (Uniform Function Call Syntax)
+        House build()
+        {
+            return house;
+        }
     }
 
-    void setSauce(string sauce)
-    {
-        this.sauce = sauce;
-    }
-
-    void setTopping(string topping)
-    {
-        this.topping = topping;
-    }
-
+    // toString using string interpolation
     override string toString() const
     {
-        return format("Pizza with %s dough, %s sauce, and %s topping", dough, sauce, topping);
-    }
-}
+        import std.format: format;
 
-// Builder interface
-interface PizzaBuilder
-{
-    PizzaBuilder buildDough();
-    PizzaBuilder buildSauce();
-    PizzaBuilder buildTopping();
-    Pizza getResult();
-}
-
-// Concrete Builder
-class HawaiianPizzaBuilder : PizzaBuilder
-{
-    private Pizza pizza;
-
-    this()
-    {
-        pizza = new Pizza();
-    }
-
-    PizzaBuilder buildDough()
-    {
-        pizza.setDough("cross");
-        return this;
-    }
-
-    PizzaBuilder buildSauce()
-    {
-        pizza.setSauce("mild");
-        return this;
-    }
-
-    PizzaBuilder buildTopping()
-    {
-        pizza.setTopping("ham+pineapple");
-        return this;
-    }
-
-    Pizza getResult()
-    {
-        return pizza;
-    }
-}
-
-// Director
-class Waiter
-{
-    private PizzaBuilder pizzaBuilder;
-
-    void setPizzaBuilder(PizzaBuilder pb)
-    {
-        pizzaBuilder = pb;
-    }
-
-    Pizza getPizza()
-    {
-        return pizzaBuilder.getResult();
-    }
-
-    void constructPizza()
-    {
-        pizzaBuilder.buildDough()
-            .buildSauce()
-            .buildTopping();
+        return format!"House(foundation: %s, structure: %s, roof: %s, interior: %s)"(
+            foundation, structure, roof, interior.isNull ? "Not set" : interior.get
+        );
     }
 }

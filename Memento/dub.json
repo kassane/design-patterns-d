@@ -1,0 +1,6 @@
+{
+	"name": "memento",
+	"description": "Memento Pattern sample",
+	"license": "Apache-2.0",
+	"authors": ["Matheus Catarino França <matheus-catarino@hotmail.com>"]
+}

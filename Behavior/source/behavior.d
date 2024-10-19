@@ -1,10 +1,13 @@
 module behavior;
-import std.stdio;
-import std.algorithm;
-import std.range;
-import std.random;
 
-// Define an interface for behaviors
+public
+{
+    import std.algorithm;
+    import std.range;
+    import std.random;
+    import std.stdio;
+}
+
 interface IBehavior
 {
     void execute();

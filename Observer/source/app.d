@@ -18,3 +18,13 @@ void main()
 
 	subject.setState("New State 2");
 }
+
+/*
+Output:
+
+Observer 1 received update: New State 1
+Observer 2 received update: New State 1
+Observer 3 received update: New State 1
+Observer 1 received update: New State 2
+Observer 3 received update: New State 2
+*/

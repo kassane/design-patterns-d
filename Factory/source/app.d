@@ -18,3 +18,12 @@ void main()
 	auto productD = variantFactory.create("ConcreteProductB");
 	productD.use();
 }
+
+/*
+Output:
+
+Using ConcreteProductA
+Using ConcreteProductB
+Using ConcreteProductA
+Using ConcreteProductB
+*/
