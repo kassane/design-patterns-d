@@ -8,11 +8,13 @@ module behavior;
 
 public
 {
-    import std.algorithm;
-    import std.range;
-    import std.random;
-    import std.stdio;
+    import std.algorithm: each;
+    import std.range: take;
+    import std.random: randomShuffle;
+    import std.stdio: writeln;
 }
+
+@safe:
 
 interface IBehavior
 {

@@ -6,7 +6,7 @@
 */
 import observer;
 
-void main()
+void main() @safe
 {
 	auto subject = new Subject();
 

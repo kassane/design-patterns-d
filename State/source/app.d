@@ -6,7 +6,7 @@
 */
 import state;
 
-void main()
+void main() @safe
 {
 	auto context = new Context();
 

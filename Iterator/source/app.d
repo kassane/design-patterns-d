@@ -6,7 +6,7 @@
 */
 import iterator;
 
-void main()
+void main() @safe
 {
 	// Iterator with int
 	auto intAggregate = new ConcreteAggregate!int([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);

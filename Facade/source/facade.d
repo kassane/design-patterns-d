@@ -14,6 +14,8 @@ public
 import std.range;
 import std.string;
 
+@safe:
+
 // Subsystem classes
 class CPU
 {

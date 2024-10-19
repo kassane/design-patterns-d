@@ -5,8 +5,10 @@
 * license may be found at https://opensource.org/license/bsd-3-clause
 */
 module iterator;
-import std.stdio;
+import std.stdio: write, writeln;
 import std.range;
+
+@safe:
 
 interface Iterator(T)
 {

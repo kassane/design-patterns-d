@@ -6,7 +6,7 @@
 */
 import facade;
 
-void main()
+void main() @safe
 {
 	auto computer = new ComputerFacade();
 	computer.start();

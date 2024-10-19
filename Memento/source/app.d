@@ -6,7 +6,7 @@
 */
 import memento;
 
-void main()
+void main() @safe
 {
 	auto originator = new Originator();
 	auto caretaker = new Caretaker();

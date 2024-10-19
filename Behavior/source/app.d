@@ -6,7 +6,7 @@
 */
 import behavior;
 
-void main()
+void main() @safe
 {
 	auto jumpBehavior = new JumpBehavior();
 	auto runBehavior = new RunBehavior();

@@ -2,5 +2,6 @@
 	"name": "builder",
 	"description": "Builder Pattern sample",
 	"license": "BSD 3-clause",
-	"authors": ["Matheus Catarino França <matheus-catarino@hotmail.com>"]
+	"authors": ["Matheus Catarino França <matheus-catarino@hotmail.com>"],
+	"dflags": ["-preview=dip1000"]
 }

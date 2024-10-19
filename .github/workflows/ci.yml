@@ -1,0 +1,43 @@
+name: D
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        runs-on: [ubuntu-latest, macos-latest, windows-latest]
+        compiler: [ldc-latest, dmd-latest]
+        example:
+            - AbstractFactory
+            - Adapter
+            - Behavior
+            - Builder
+            - Bridge
+            - Decorator
+            - Facade
+            - Factory
+            - FlyWeight
+            - Iterator
+            - Mediator
+            - Memento
+            - Observer
+            - Prototype
+            - Proxy
+            # - Singleton
+            - State
+            - Strategy
+            - TemplateMethod
+            - Visitor
+    runs-on: ${{ matrix.runs-on }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dlang-community/setup-dlang@v2
+        with:
+          compiler: ${{ matrix.compiler }}
+
+      - name: Build and Run
+        run: |
+          cd ${{ matrix.example }}
+          dub # build & run

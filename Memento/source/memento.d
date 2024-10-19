@@ -8,6 +8,8 @@ module memento;
 public import std.stdio;
 import std.typecons: Tuple;
 
+@safe:
+
 // Memento: Stores the internal state of the Originator
 struct Memento
 {

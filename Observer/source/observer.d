@@ -9,6 +9,8 @@ import std.stdio: writefln;
 import std.container: DList;
 import std.algorithm: remove;
 
+@safe:
+
 interface Observer
 {
     void update(string message);
@@ -21,12 +23,12 @@ private:
     string state;
 
 public:
-    void attach(Observer observer)
+    void attach(Observer observer) @trusted
     {
         observers.insertBack(observer);
     }
 
-    void detach(Observer observer)
+    void detach(Observer observer) @trusted
     {
         observers = DList!Observer(observers[].remove!(a => a == observer));
     }

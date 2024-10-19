@@ -6,7 +6,7 @@
 */
 import proxy;
 
-void main()
+void main() @safe
 {
 	auto proxy = new Proxy();
 

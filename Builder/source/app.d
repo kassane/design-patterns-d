@@ -6,7 +6,7 @@
 */
 import builder;
 
-void main()
+void main() @safe
 {
 	// Using UFCS and method chaining
 	auto house = new House.Builder()

@@ -5,8 +5,10 @@
 * license may be found at https://opensource.org/license/bsd-3-clause
 */
 module state;
-import std.stdio;
+import std.stdio: writeln;
 import std.typecons: Nullable;
+
+@safe:
 
 // State interface
 interface State

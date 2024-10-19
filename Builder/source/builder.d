@@ -8,6 +8,8 @@ module builder;
 public import std.stdio;
 import std.typecons: Nullable;
 
+@safe:
+
 class House
 {
     private string foundation;
