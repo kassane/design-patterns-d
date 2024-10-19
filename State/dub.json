@@ -1,6 +1,6 @@
 {
 	"name": "state",
 	"description": "State Pattern sample",
-	"license": "Apache-2.0",
+	"license": "BSD 3-clause",
 	"authors": ["Matheus Catarino França <matheus-catarino@hotmail.com>"]
 }

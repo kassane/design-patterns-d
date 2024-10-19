@@ -1,6 +1,7 @@
 {
 	"name": "factory",
 	"description": "Factory Pattern sample",
-	"license": "Apache-2.0",
-	"authors": ["Matheus Catarino França <matheus-catarino@hotmail.com>"]
+	"license": "BSD 3-clause",
+	"authors": ["Matheus Catarino França <matheus-catarino@hotmail.com>"],
+	"dflags": ["-preview=dip1000"]
 }

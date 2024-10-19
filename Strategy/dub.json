@@ -1,6 +1,6 @@
 {
-	"name": "visitor",
-	"description": "Visitor Pattern sample",
+	"name": "strategy",
+	"description": "Strategy Pattern sample",
 	"license": "BSD 3-clause",
 	"authors": ["Matheus Catarino França <matheus-catarino@hotmail.com>"],
 	"dflags": ["-preview=dip1000"]
