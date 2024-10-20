@@ -6,22 +6,44 @@
 */
 
 import singleton;
-import std.stdio: writeln;
+import std.stdio: write, writeln;
+
+void taskFunction(string value) @safe
+{
+	import core.thread: Thread;
+	import core.time: dur;
+
+	Thread.sleep(dur!"msecs"(1000));
+	auto singleton = Singleton.getInstance(value);
+	write(" ", singleton.value);
+}
 
 void main() @safe
 {
-	// Get the Singleton instance twice
-	Singleton singleton1 = Singleton.getInstance();
-	Singleton singleton2 = Singleton.getInstance();
+	import std.parallelism: task, TaskPool;
+	import std.algorithm: each;
 
-	// Error: constructor `singleton.Singleton.this` is not accessible from module `app`
-	// Singleton singleton3 = new Singleton();
-	// _ = singleton3;
+	"If you see the same value, then singleton was reused (yay!)".writeln;
+	"If you see different values, then 2 singletons were created (booo!!)".writeln;
+	"RESULT:".write;
 
-	// Output the values
-	writeln("If you see the same value, then singleton was reused (yay!");
-	writeln("If you see different values, then 2 singletons were created (booo!!)");
-	writeln("RESULT: ", singleton1.getValue(), " ", singleton2.getValue());
+	auto pool = new TaskPool();
+	scope (exit)
+		pool.stop();
+
+	auto tasks = [
+		task(&taskFunction, "FOO"),
+		task(&taskFunction, "BAR")
+	];
+
+	tasks.each!(t => pool.put(t));
+	pool.finish();
+
+	foreach (t; tasks)
+	{
+		t.yieldForce();
+	}
+	writeln();
 }
 
 /*
@@ -29,5 +51,5 @@ Output:
 
 If you see the same value, then singleton was reused (yay!
 If you see different values, then 2 singletons were created (booo!!)
-RESULT: FOO FOO
+RESULT: FOO BAR
 */

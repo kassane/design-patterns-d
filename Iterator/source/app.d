@@ -23,6 +23,23 @@ void main() @safe
 	printIterator(customIterator, "Iterator with custom Class");
 }
 
+class CustomClass
+{
+	int value;
+
+	this(int value) @safe
+	{
+		this.value = value;
+	}
+
+	override string toString() @safe
+	{
+		import std.conv: to;
+
+		return value.to!string;
+	}
+}
+
 /*
 Output:
 ________________Iterator with int______________________________________

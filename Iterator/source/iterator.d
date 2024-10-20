@@ -62,23 +62,6 @@ class ConcreteAggregate(T) : Aggregate!T
     }
 }
 
-class CustomClass
-{
-    int value;
-
-    this(int value)
-    {
-        this.value = value;
-    }
-
-    override string toString()
-    {
-        import std.conv: to;
-
-        return value.to!string;
-    }
-}
-
 void printIterator(T)(Iterator!T iterator, string title)
 {
     writeln("________________", title, "______________________________________");

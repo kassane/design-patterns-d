@@ -13,8 +13,11 @@ jobs:
             - AbstractFactory
             - Adapter
             - Behavior
-            - Builder
             - Bridge
+            - Builder
+            - ChainsOfResponsability
+            - Command
+            - Composite
             - Decorator
             - Facade
             - Factory

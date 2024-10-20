@@ -10,26 +10,30 @@ module singleton;
 
 class Singleton
 {
-    private static Singleton instance;
-    private string value;
+    private
+    {
+        static Singleton instance_;
+        string value_;
 
-    // private module access (isn't C++ private class members)
-    private this()
-    {
-        value = "FOO";
-    }
-    // public is default
-    static Singleton getInstance()
-    {
-        if (instance is null)
+        this(string value)
         {
-            instance = new Singleton();
+            value_ = value;
         }
-        return instance;
     }
 
-    string getValue()
+    static Singleton getInstance(string value)
     {
-        return value;
+
+        if (instance_ is null)
+        {
+
+            instance_ = new Singleton(value);
+        }
+        return instance_;
+    }
+
+    string value() const @property
+    {
+        return value_;
     }
 }

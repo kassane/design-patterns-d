@@ -1,0 +1,7 @@
+{
+	"name": "chains",
+	"description": "Chains Of Responsability Pattern sample",
+	"license": "BSD 3-clause",
+	"authors": ["Matheus Catarino França <matheus-catarino@hotmail.com>"],
+	"dflags": ["-preview=dip1000"]
+}
