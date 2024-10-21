@@ -3,5 +3,5 @@
 	"description": "Flyweight Pattern sample",
 	"license": "BSD 3-clause",
 	"authors": ["Matheus Catarino França <matheus-catarino@hotmail.com>"],
-	"dflags": ["-preview=dip1000"]
+	"dflags": ["-preview=all"]
 }

@@ -6,38 +6,37 @@
 */
 
 module flyweight;
-import std.stdio;
-import std.container.array;
-import std.algorithm.iteration;
-import std.range;
-import std.string;
+import std.stdio: writeln, writefln;
+import std.format: format;
 
 @safe:
 
-// Flyweight interface
 interface Car
 {
-    void display(string licensePlate, string owner);
+    void display(string licensePlate, string owner) const;
 }
 
-// Concrete Flyweight
 class CarModel : Car
 {
-    private string brand;
-    private string model;
-    private string color;
+    private SharedState sharedState;
 
-    this(string brand, string model, string color)
+    this(ref const SharedState sharedState)
     {
-        this.brand = brand;
-        this.model = model;
-        this.color = color;
+        this.sharedState = sharedState;
     }
 
-    void display(string licensePlate, string owner)
+    void display(string licensePlate, string owner) const
     {
-        writefln("Flyweight: Displaying shared ([ %s , %s , %s ]) and unique ([ %s , %s ]) state.", brand, model, color, licensePlate, owner);
+        writefln("Flyweight: Displaying shared ([ %s , %s , %s ]) and unique ([ %s , %s ]) state.",
+            sharedState.brand, sharedState.model, sharedState.color, licensePlate, owner);
     }
+}
+
+struct SharedState
+{
+    string brand;
+    string model;
+    string color;
 }
 
 // Flyweight Factory
@@ -47,20 +46,26 @@ class CarFactory
 
     this()
     {
-        flyweights["BMW_X6_white"] = new CarModel("BMW", "X6", "white");
-        flyweights["Mercedes Benz_C500_red"] = new CarModel("Mercedes Benz", "C500", "red");
-        flyweights["Mercedes Benz_C300_black"] = new CarModel("Mercedes Benz", "C300", "black");
-        flyweights["BMW_M5_red"] = new CarModel("BMW", "M5", "red");
-        flyweights["Chevrolet_Camaro2018_pink"] = new CarModel("Chevrolet", "Camaro2018", "pink");
+        addFlyweight("BMW", "X6", "white");
+        addFlyweight("Mercedes Benz", "C500", "red");
+        addFlyweight("Mercedes Benz", "C300", "black");
+        addFlyweight("BMW", "M5", "red");
+        addFlyweight("Chevrolet", "Camaro2018", "pink");
+    }
+
+    private void addFlyweight(string brand, string model, string color)
+    {
+        immutable string key = format("%s_%s_%s", brand, model, color);
+        flyweights[key] = new CarModel(SharedState(brand, model, color));
     }
 
     Car getCar(string brand, string model, string color)
     {
-        string key = format("%s_%s_%s", brand, model, color);
+        immutable string key = format("%s_%s_%s", brand, model, color);
         if (key !in flyweights)
         {
             writefln("FlyweightFactory: Can't find a flyweight, creating new one.");
-            flyweights[key] = new CarModel(brand, model, color);
+            flyweights[key] = new CarModel(SharedState(brand, model, color));
         }
         else
         {
@@ -69,15 +74,14 @@ class CarFactory
         return flyweights[key];
     }
 
-    void listFlyweights()
+    void listFlyweights() const
     {
         int count = cast(int)flyweights.length;
-        writefln("FlyweightFactory: I have %d flyweights:", count);
-        foreach (key; flyweights.keys)
+        writefln("\nFlyweightFactory: I have %d flyweights:", count);
+        foreach (key; flyweights.byKey)
         {
-            write(key, " ");
+            writeln(key);
         }
-        writeln();
     }
 }
 
@@ -85,7 +89,7 @@ void addCarToPoliceDatabase(
     CarFactory factory, string brand, string model,
     string color, string licensePlate, string owner)
 {
-    writeln("Client: Adding a car to database.");
+    writeln("\nClient: Adding a car to database.");
     Car flyweight = factory.getCar(brand, model, color);
     flyweight.display(licensePlate, owner);
 }
