@@ -1,5 +1,6 @@
 # Design Patterns - in D language
 
+[![D](https://github.com/kassane/design-patterns-d/actions/workflows/ci.yml/badge.svg)](https://github.com/kassane/design-patterns-d/actions/workflows/ci.yml)
 
 ## Requirements
 

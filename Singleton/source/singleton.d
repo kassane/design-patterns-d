@@ -10,6 +10,7 @@ module singleton;
 
 class Singleton
 {
+    // private module access, isn't C++ class private members
     private
     {
         static Singleton instance_;

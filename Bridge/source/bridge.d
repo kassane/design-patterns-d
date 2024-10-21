@@ -30,7 +30,6 @@ class ConcreteImplementationB : Implementor
     }
 }
 
-// Abstraction
 class Abstraction
 {
     private Implementor implementor;
@@ -46,7 +45,6 @@ class Abstraction
     }
 }
 
-// Extended Abstraction
 class ExtendedAbstraction : Abstraction
 {
     this(Implementor impl)

@@ -27,6 +27,10 @@ void main() @safe
 	"If you see different values, then 2 singletons were created (booo!!)".writeln;
 	"RESULT:".write;
 
+	// Error: constructor `singleton.Singleton.this` is not accessible from module `app`
+	// auto singleton = new Singleton("FOO");
+	// _ = singleton;
+
 	auto pool = new TaskPool();
 	scope (exit)
 		pool.stop();

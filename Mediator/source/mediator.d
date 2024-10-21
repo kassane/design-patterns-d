@@ -5,11 +5,10 @@
 * license may be found at https://opensource.org/license/bsd-3-clause
 */
 module mediator;
-import std.stdio;
+import std.stdio: writeln;
 
 @safe:
 
-// Mediator interface
 interface IMediator
 {
     void notify(Component sender, string event);

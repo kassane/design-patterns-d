@@ -10,13 +10,11 @@ import std.typecons: Nullable;
 
 @safe:
 
-// Subject interface
 interface ISubject
 {
     void request();
 }
 
-// RealSubject class
 class RealSubject : ISubject
 {
     void request()
@@ -25,7 +23,6 @@ class RealSubject : ISubject
     }
 }
 
-// Proxy class
 class Proxy : ISubject
 {
     private Nullable!RealSubject realSubject;

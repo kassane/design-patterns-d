@@ -9,7 +9,6 @@ import std.string;
 
 @safe:
 
-// Component interface
 interface Text
 {
     string getContent();

@@ -10,7 +10,6 @@ import std.typecons: Tuple;
 
 @safe:
 
-// Abstract Product interfaces
 interface AbstractProductA
 {
     string getResult();
@@ -65,7 +64,6 @@ class ConcreteProductB2 : AbstractProductB
     }
 }
 
-// Abstract Factory interface
 interface AbstractFactory
 {
     AbstractProductA createProductA();
@@ -99,7 +97,6 @@ class ConcreteFactory2 : AbstractFactory
     }
 }
 
-// Client code
 void clientCode(AbstractFactory factory)
 {
     auto productA = factory.createProductA();

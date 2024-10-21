@@ -11,7 +11,6 @@ import std.sumtype;
 
 @safe:
 
-// Product interface
 interface Product
 {
     void use();
@@ -34,7 +33,6 @@ class ConcreteProductB : Product
     }
 }
 
-// Factory using D's template features
 class Factory(T...)
 {
     static Product create(string productType)
